@@ -1,5 +1,7 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConfig");
 const routes = require("./routes");
@@ -13,6 +15,7 @@ connectDB();
 const app = express();
 
 // Load server middleware
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
