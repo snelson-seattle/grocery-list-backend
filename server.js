@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConfig");
+const routes = require("./routes");
 
 const PORT = process.env.PORT || 3500;
 
@@ -14,6 +15,7 @@ const app = express();
 // Load server middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(routes);
 
 
 // Check for database connection, then start web server
